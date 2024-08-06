@@ -1,0 +1,467 @@
+#include <iostream>
+#include <stdlib.h>
+
+using namespace std;
+
+struct Buku
+{
+	string judul, pengarang;
+	int tahunTerbit;
+	Buku *next;
+};
+
+Buku *head, *tail, *cur, *newNode, *del, *before;
+
+void createSingleLinkedList(string judul, string pengarang, int tB)
+{
+	head = new Buku();
+	head->judul = judul;
+	head->pengarang = pengarang;
+	head->tahunTerbit = tB;
+	head->next = NULL;
+	tail = head;
+}
+
+int countSingleLinkedList()
+{
+	cur = head;
+	int jumlah = 0;
+	while (cur != NULL)
+	{
+		jumlah++;
+		cur = cur->next;
+	}
+	return jumlah;
+}
+
+void addFirst(string judul, string pengarang, int tB)
+{
+	newNode = new Buku();
+	newNode->judul = judul;
+	newNode->pengarang = pengarang;
+	newNode->tahunTerbit = tB;
+	newNode->next = head;
+	head = newNode;
+}
+
+void addLast(string judul, string pengarang, int tB)
+{
+	newNode = new Buku();
+	newNode->judul = judul;
+	newNode->pengarang = pengarang;
+	newNode->tahunTerbit = tB;
+	newNode->next = NULL;
+	tail->next = newNode;
+	tail = newNode;
+}
+
+void addMiddle(string judul, string pengarang, int tB, int posisi)
+{
+	if (posisi < 1 || posisi > countSingleLinkedList())
+	{
+		cout << "Posisi diluar jangkauan" << endl;
+	}
+	else if (posisi == 1)
+	{
+		cout << "Posisi bukan posisi tengah" << endl;
+	}
+	else
+	{
+		newNode = new Buku();
+		newNode->judul = judul;
+		newNode->pengarang = pengarang;
+		newNode->tahunTerbit = tB;
+
+		cur = head;
+		int nomor = 1;
+		while (nomor < posisi - 1)
+		{
+			cur = cur->next;
+			nomor++;
+		}
+		newNode->next = cur->next;
+		cur->next = newNode;
+	}
+}
+
+void removeFirst()
+{
+	del = head;
+	head = head->next;
+	delete del;
+}
+
+void removeLast()
+{
+	del = tail;
+	cur = head;
+	while (cur->next != tail)
+	{
+		cur = cur->next;
+	}
+	tail = cur;
+	tail->next = NULL;
+	delete del;
+}
+
+void removeMiddle(int posisi)
+{
+	if (posisi < 1 || posisi > countSingleLinkedList())
+	{
+		cout << "Posisi diluar jangkauan" << endl;
+	}
+	else if (posisi == 1)
+	{
+		cout << "Posisi bukan posisi tengah" << endl;
+	}
+	else
+	{
+		int nomor = 1;
+		cur = head;
+		while (nomor <= posisi)
+		{
+			if (nomor == posisi - 1)
+			{
+				before = cur;
+			}
+			if (nomor == posisi)
+			{
+				del = cur;
+			}
+			cur = cur->next;
+			nomor++;
+		}
+		before->next = cur;
+		delete del;
+	}
+}
+
+void changeFirst(string judul, string pengarang, int tB)
+{
+	head->judul = judul;
+	head->pengarang = pengarang;
+	head->tahunTerbit = tB;
+}
+
+void changeLast(string judul, string pengarang, int tB)
+{
+	tail->judul = judul;
+	tail->pengarang = pengarang;
+	tail->tahunTerbit = tB;
+}
+
+void changeMiddle(string judul, string pengarang, int tB, int posisi)
+{
+	if (posisi < 1 || posisi > countSingleLinkedList())
+	{
+		cout << "Posisi diluar jangkauan" << endl;
+	}
+	else if (posisi == 1 || posisi == countSingleLinkedList())
+	{
+		cout << "Posisi bukan posisi tengah" << endl;
+	}
+	else
+	{
+		cur = head;
+		int nomor = 1;
+		while (nomor < posisi)
+		{
+			cur = cur->next;
+			nomor++;
+		}
+		cur->judul = judul;
+		cur->pengarang = pengarang;
+		cur->tahunTerbit = tB;
+	}
+}
+
+void printSingleLinkedList()
+{
+	cout << "Jumlah data ada : " << countSingleLinkedList() << endl;    //my own experiment
+	cout << "===========================" << endl;
+	cur = head;
+
+	while (cur != NULL)
+	{
+		cout << "Judul Buku : " << cur->judul << endl;
+		cout << "Pengarang Buku : " << cur->pengarang << endl;
+		cout << "Tahun Terbit Buku : " << cur->tahunTerbit << endl;
+		cout << "---------------------------" << endl;
+
+		cur = cur->next;
+	}
+}
+
+//-------------------------MENU CRUD PROGRAM------------------------//
+void createData()
+{
+	system("cls");
+	cur = head;
+	if (cur != NULL)
+	{
+		cout << "Gunakan menu 'Add' untuk menambahkan data baru!";
+		cout << "\n\n" << endl;
+	}
+	else
+	{
+		string judul, pengarang; 
+		int tahunTerbit;
+		cout << "Judul Buku      : ";
+		cin >> judul;
+		cout << "Pengarang Buku  : ";
+		cin >> pengarang;
+		cout << "Tahun Terbit    : ";
+		cin >> tahunTerbit;
+		createSingleLinkedList(judul, pengarang, tahunTerbit);
+		cout << "List baru telah berhasil dibuat!";
+		cout << "\n\n" << endl;
+	}
+}
+
+void readData()
+{
+	system("cls");
+	if (countSingleLinkedList() == 0)
+	{
+		cout << "Data masih kosong!\nSilahkan buat list baru.";
+	}
+	else
+	{
+		printSingleLinkedList();
+	}
+	cout << "\n\n" << endl;
+}
+
+void updateData()
+{
+	system("cls");
+	if (countSingleLinkedList() == 0)
+	{
+		cout << "Data masih kosong!\nTidak ada yang bisa diupdate.";
+		cout << "\n\n" << endl;
+	}
+	else
+	{
+		string judul, pengarang; 
+		int tahunTerbit, posisi;
+		int update;
+
+		cout << "=== Update Menu ===" << endl;
+		cout << "1. Update First Data" << endl;
+		cout << "2. Update Middle Data" << endl;
+		cout << "3. Update Last Data" << endl;
+		cout << "Angka selain diatas untuk keluar" << endl;
+		cout << "Masukkan pilihan : "; cin >> update;
+		switch (update)
+		{
+		case 1:
+			cout << "Judul Buku      : ";
+			cin >> judul;
+			cout << "Pengarang Buku  : ";
+			cin >> pengarang;
+			cout << "Tahun Terbit	 : ";
+			cin >> tahunTerbit;
+			changeFirst(judul, pengarang, tahunTerbit);
+			cout << endl << endl;
+			break;
+		
+		case 2:
+			cout << "Judul Buku      : ";
+			cin >> judul;
+			cout << "Pengarang Buku  : ";
+			cin >> pengarang;
+			cout << "Tahun Terbit	 : ";
+			cin >> tahunTerbit;
+			cout << "Posisi Baru	 : ";
+			cin >> posisi;
+			changeMiddle(judul, pengarang, tahunTerbit, posisi);
+			cout << endl << endl;
+			break;
+
+		case 3:
+			cout << "Judul Buku      : ";
+			cin >> judul;
+			cout << "Pengarang Buku  : ";
+			cin >> pengarang;
+			cout << "Tahun Terbit	 : ";
+			cin >> tahunTerbit;
+			changeLast(judul, pengarang, tahunTerbit);
+			cout << endl << endl;
+			break;
+
+		default:
+			cout << "Pilihan tidak valid. Silahkan coba lagi";
+			cout << "\n\n" << endl;
+			break;
+		}
+	}
+}
+
+void deleteData()
+{
+	system("cls");
+	if (countSingleLinkedList() == 0)
+	{
+		cout << "Data masih kosong!\nTidak ada yang bisa dihapus.";
+		cout << "\n\n" << endl;
+	}
+	else
+	{
+		int posisi;
+		int Delete;	
+		cout << "=== Delete Menu ===" << endl;
+		cout << "1. Delete First Data" << endl;
+		cout << "2. Delete Middle Data" << endl;
+		cout << "3. Delete Last Data" << endl;
+		cout << "Angka selain diatas untuk keluar" << endl;
+		cout << "Masukkan pilihan : "; cin >> Delete;
+		switch (Delete)
+		{
+		case 1:
+			removeFirst();
+			cout << endl << endl;
+			break;
+			
+		case 2:
+			cout << "Posisi yang ingin dihapus : ";
+			cin >> posisi;
+			removeMiddle(posisi);
+			cout << endl << endl;
+			break;
+
+		case 3:
+			removeLast();
+			cout << endl << endl;
+			break;
+		
+		default:
+			system("cls");
+			cout << "Kembali ke menu utama....";
+			cout << "\n\n" << endl;
+			break;
+		}
+	}
+}
+
+void addData()
+{
+	system("cls");
+	if (countSingleLinkedList() == 0)
+	{
+		cout << "Data belum tersedia!\nSilahkan buat dengan menu create.";
+		cout << "\n\n" << endl;
+	}
+	else
+	{
+		string judul, pengarang;
+		int tahunTerbit, posisi;
+		int add;
+		cout << "=== Add Menu ===" << endl;
+		cout << "1. Add First Data" << endl;
+		cout << "2. Add Middle Data" << endl;
+		cout << "3. Add Last Data" << endl;
+		cout << "Angka selain diatas untuk keluar" << endl;
+		cout << "Masukkan pilihan : "; cin >> add;
+		switch (add)
+		{
+		case 1:
+			cout << "Judul Buku      : ";
+			cin >> judul;
+			cout << "Pengarang Buku  : ";
+			cin >> pengarang;
+			cout << "Tahun Terbit	 : ";
+			cin >> tahunTerbit;
+			addFirst(judul, pengarang, tahunTerbit);
+			cout << endl << endl;
+			break;
+
+		case 2:
+			cout << "Judul Buku      : ";
+			cin >> judul;
+			cout << "Pengarang Buku  : ";
+			cin >> pengarang;
+			cout << "Tahun Terbit	 : ";
+			cin >> tahunTerbit;
+			cout << "Posisi Baru	 : ";
+			cin >> posisi;
+			addMiddle(judul, pengarang, tahunTerbit, posisi);
+			cout << endl << endl;
+			break;
+
+		case 3:
+			cout << "Judul Buku      : ";
+			cin >> judul;
+			cout << "Pengarang Buku  : ";
+			cin >> pengarang;
+			cout << "Tahun Terbit	 : ";
+			cin >> tahunTerbit;
+			addLast(judul, pengarang, tahunTerbit);
+			cout << endl << endl;
+			break;
+		
+		default:
+			system("cls");
+			cout << "Kembali ke menu utama....";
+			cout << "\n\n" << endl;
+			break;
+		}
+	}
+}
+
+void mainMenu()
+{
+	int pilihan;
+	do
+	{
+		system("cls");
+		menu:
+		cout << "=== Menu CRUD ===" << endl;
+		cout << "1. Create Data " << endl;
+		cout << "2. Read Data " << endl;
+		cout << "3. Update Data " << endl;
+		cout << "4. Delete Data " << endl;
+		cout << "5. Add Data " << endl;
+		cout << "6. Exit " << endl;
+		cout << "Masukkan pilihan : "; cin >> pilihan;
+		switch (pilihan)
+		{
+		case 1:
+			createData();
+			goto menu;
+			break;
+		case 2:
+			readData();
+			goto menu;
+			break;
+		case 3:
+			updateData();
+			goto menu;
+			break;
+		case 4:
+			deleteData();
+			goto menu;
+			break;
+		case 5:
+			addData();
+			goto menu;
+			break;
+		case 6: 
+			system("cls");
+			cout << "Terimakasih telah menggunakan program ini" << endl;
+			cout << "Keluar dari program...." << endl;
+			cout << "\n\n" << endl;
+			break;
+		default:
+			system("cls");
+			cout << "Pilihan tidak valid!" << endl;
+			cout << "\n\n" << endl;
+			goto menu;
+		}	
+	} while (pilihan != 6);
+}
+
+int main()
+{
+	mainMenu();
+	return 0;
+}
