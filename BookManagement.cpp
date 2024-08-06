@@ -290,7 +290,7 @@ void updateData()
 			break;
 
 		default:
-			cout << "Pilihan tidak valid. Silahkan coba lagi";
+			cout << "Pilihan tidak valid. Silahkan coba lagi.";
 			cout << "\n\n" << endl;
 			break;
 		}
@@ -335,8 +335,7 @@ void deleteData()
 			break;
 		
 		default:
-			system("cls");
-			cout << "Kembali ke menu utama....";
+			cout << "Pilihan tidak valid. Silahkan coba lagi.";
 			cout << "\n\n" << endl;
 			break;
 		}
@@ -400,8 +399,7 @@ void addData()
 			break;
 		
 		default:
-			system("cls");
-			cout << "Kembali ke menu utama....";
+			cout << "Pilihan tidak valid. Silahkan coba lagi.";
 			cout << "\n\n" << endl;
 			break;
 		}
@@ -414,7 +412,6 @@ void mainMenu()
 	do
 	{
 		system("cls");
-		menu:
 		cout << "=== Menu CRUD ===" << endl;
 		cout << "1. Create Data " << endl;
 		cout << "2. Read Data " << endl;
@@ -427,23 +424,18 @@ void mainMenu()
 		{
 		case 1:
 			createData();
-			goto menu;
 			break;
 		case 2:
 			readData();
-			goto menu;
 			break;
 		case 3:
 			updateData();
-			goto menu;
 			break;
 		case 4:
 			deleteData();
-			goto menu;
 			break;
 		case 5:
 			addData();
-			goto menu;
 			break;
 		case 6: 
 			system("cls");
@@ -452,10 +444,8 @@ void mainMenu()
 			cout << "\n\n" << endl;
 			break;
 		default:
-			system("cls");
-			cout << "Pilihan tidak valid!" << endl;
+			cout << "Pilihan tidak valid. Silahkan coba lagi." << endl;
 			cout << "\n\n" << endl;
-			goto menu;
 		}	
 	} while (pilihan != 6);
 }
