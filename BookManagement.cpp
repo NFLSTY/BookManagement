@@ -177,7 +177,7 @@ void changeMiddle(string judul, string pengarang, int tB, int posisi)
 
 void printSingleLinkedList()
 {
-	cout << "Jumlah data ada : " << countSingleLinkedList() << endl;    
+	cout << "Jumlah buku ada : " << countSingleLinkedList() << endl;    
 	cout << "===========================" << endl;
 	cur = head;
 
@@ -193,6 +193,11 @@ void printSingleLinkedList()
 }
 
 //-------------------------MENU CRUD PROGRAM------------------------//
+void message()
+{
+	printf("Operasi telah berhasil dilakukan!");
+}
+
 void createData()
 {
 	cur = head;
@@ -213,7 +218,7 @@ void createData()
 		cout << "Tahun Terbit    : ";
 		cin >> tahunTerbit;
 		createSingleLinkedList(judul, pengarang, tahunTerbit);
-		cout << "List baru telah berhasil dibuat!";
+		message();
 		cout << "\n\n" << endl;
 	}
 }
@@ -222,14 +227,15 @@ void readData()
 {
 	if (countSingleLinkedList() == 0)
 	{
-		cout << "Data masih kosong!\nTidak ada yang bisa dilihat.";
+		cout << "Data masih kosong!\nTidak ada yang bisa ditampilkan.";
+		cout << "\n\n" << endl;
 	}
 	else
 	{
 		system("cls");
 		printSingleLinkedList();
+		cout << "\n\n" << endl;
 	}
-	cout << "\n\n" << endl;
 }
 
 void updateData()
@@ -246,7 +252,6 @@ void updateData()
 		int upd;
 		do
 		{
-			system("cls");
 			cout << "=== Update Menu ===" << endl;
 			cout << "1. Update First Data" << endl;
 			cout << "2. Update Middle Data" << endl;
@@ -317,7 +322,6 @@ void deleteData()
 		int del;	
 		do
 		{
-			system("cls");
 			cout << "=== Delete Menu ===" << endl;
 			cout << "1. Delete First Data" << endl;
 			cout << "2. Delete Middle Data" << endl;
@@ -371,7 +375,6 @@ void addData()
 		int add;
 		do
 		{
-			system("cls");
 			cout << "=== Add Menu ===" << endl;
 			cout << "1. Add First Data" << endl;
 			cout << "2. Add Middle Data" << endl;
@@ -434,7 +437,7 @@ void mainMenu()
 	int pilihan;
 	do
 	{
-		cout << "=== Menu CRUD ===" << endl;
+		cout << "=== Book Management ===" << endl;
 		cout << "1. Create Data " << endl;
 		cout << "2. Read Data " << endl;
 		cout << "3. Update Data " << endl;
