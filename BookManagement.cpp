@@ -177,7 +177,7 @@ void changeMiddle(string judul, string pengarang, int tB, int posisi)
 
 void printSingleLinkedList()
 {
-	cout << "Jumlah data ada : " << countSingleLinkedList() << endl;    //my own experiment
+	cout << "Jumlah data ada : " << countSingleLinkedList() << endl;    
 	cout << "===========================" << endl;
 	cur = head;
 
@@ -251,7 +251,7 @@ void updateData()
 			cout << "1. Update First Data" << endl;
 			cout << "2. Update Middle Data" << endl;
 			cout << "3. Update Last Data" << endl;
-			cout << "Angka selain diatas untuk keluar" << endl;
+			cout << "4. Kembali ke menu utama" << endl;
 			cout << "Masukkan pilihan : "; cin >> upd;
 			switch (upd)
 			{
@@ -290,12 +290,17 @@ void updateData()
 				cout << endl << endl;
 				break;
 
+			case 4:
+				system("cls");
+				return;
+				break;
+
 			default:
 				cout << "Pilihan tidak valid. Silahkan coba lagi.";
 				cout << "\n\n" << endl;
 				break;
 			}
-		} while (upd != 3);
+		} while (upd != 4);
 	}
 }
 
@@ -317,7 +322,7 @@ void deleteData()
 			cout << "1. Delete First Data" << endl;
 			cout << "2. Delete Middle Data" << endl;
 			cout << "3. Delete Last Data" << endl;
-			cout << "Angka selain diatas untuk keluar" << endl;
+			cout << "4. Kembali ke menu utama" << endl;
 			cout << "Masukkan pilihan : "; cin >> del;
 			switch (del)
 			{
@@ -337,13 +342,18 @@ void deleteData()
 				removeLast();
 				cout << endl << endl;
 				break;
-			
+
+			case 4:
+				system("cls");
+				return;
+				break;
+
 			default:
 				cout << "Pilihan tidak valid. Silahkan coba lagi.";
 				cout << "\n\n" << endl;
 				break;
 			}
-		} while (del != 3);
+		} while (del != 4);
 	}
 }
 
@@ -351,7 +361,7 @@ void addData()
 {
 	if (countSingleLinkedList() == 0)
 	{
-		cout << "Data belum tersedia!\nSilahkan buat dengan menu Create.";
+		cout << "Data belum tersedia!\nSilahkan buat dengan menu 'Create'.";
 		cout << "\n\n" << endl;
 	}
 	else
@@ -366,7 +376,7 @@ void addData()
 			cout << "1. Add First Data" << endl;
 			cout << "2. Add Middle Data" << endl;
 			cout << "3. Add Last Data" << endl;
-			cout << "Angka selain diatas untuk keluar" << endl;
+			cout << "4. Kembali ke menu utama" << endl;
 			cout << "Masukkan pilihan : "; cin >> add;
 			switch (add)
 			{
@@ -405,12 +415,17 @@ void addData()
 				cout << endl << endl;
 				break;
 			
+			case 4:
+				system("cls");
+				return;
+				break;
+			
 			default:
 				cout << "Pilihan tidak valid. Silahkan coba lagi.";
 				cout << "\n\n" << endl;
 				break;
 			}
-		} while (add != 3);
+		} while (add != 4);
 	}
 }
 
