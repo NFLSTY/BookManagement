@@ -195,7 +195,6 @@ void printSingleLinkedList()
 //-------------------------MENU CRUD PROGRAM------------------------//
 void createData()
 {
-	system("cls");
 	cur = head;
 	if (cur != NULL)
 	{
@@ -204,6 +203,7 @@ void createData()
 	}
 	else
 	{
+		system("cls");
 		string judul, pengarang; 
 		int tahunTerbit;
 		cout << "Judul Buku      : ";
@@ -220,13 +220,13 @@ void createData()
 
 void readData()
 {
-	system("cls");
 	if (countSingleLinkedList() == 0)
 	{
-		cout << "Data masih kosong!\nSilahkan buat list baru.";
+		cout << "Data masih kosong!\nTidak ada yang bisa dilihat.";
 	}
 	else
 	{
+		system("cls");
 		printSingleLinkedList();
 	}
 	cout << "\n\n" << endl;
@@ -234,7 +234,6 @@ void readData()
 
 void updateData()
 {
-	system("cls");
 	if (countSingleLinkedList() == 0)
 	{
 		cout << "Data masih kosong!\nTidak ada yang bisa diupdate.";
@@ -244,110 +243,115 @@ void updateData()
 	{
 		string judul, pengarang; 
 		int tahunTerbit, posisi;
-		int update;
-
-		cout << "=== Update Menu ===" << endl;
-		cout << "1. Update First Data" << endl;
-		cout << "2. Update Middle Data" << endl;
-		cout << "3. Update Last Data" << endl;
-		cout << "Angka selain diatas untuk keluar" << endl;
-		cout << "Masukkan pilihan : "; cin >> update;
-		switch (update)
+		int upd;
+		do
 		{
-		case 1:
-			cout << "Judul Buku      : ";
-			cin >> judul;
-			cout << "Pengarang Buku  : ";
-			cin >> pengarang;
-			cout << "Tahun Terbit	 : ";
-			cin >> tahunTerbit;
-			changeFirst(judul, pengarang, tahunTerbit);
-			cout << endl << endl;
-			break;
-		
-		case 2:
-			cout << "Judul Buku      : ";
-			cin >> judul;
-			cout << "Pengarang Buku  : ";
-			cin >> pengarang;
-			cout << "Tahun Terbit	 : ";
-			cin >> tahunTerbit;
-			cout << "Posisi Baru	 : ";
-			cin >> posisi;
-			changeMiddle(judul, pengarang, tahunTerbit, posisi);
-			cout << endl << endl;
-			break;
+			system("cls");
+			cout << "=== Update Menu ===" << endl;
+			cout << "1. Update First Data" << endl;
+			cout << "2. Update Middle Data" << endl;
+			cout << "3. Update Last Data" << endl;
+			cout << "Angka selain diatas untuk keluar" << endl;
+			cout << "Masukkan pilihan : "; cin >> upd;
+			switch (upd)
+			{
+			case 1:
+				cout << "Judul Buku      : ";
+				cin >> judul;
+				cout << "Pengarang Buku  : ";
+				cin >> pengarang;
+				cout << "Tahun Terbit	 : ";
+				cin >> tahunTerbit;
+				changeFirst(judul, pengarang, tahunTerbit);
+				cout << endl << endl;
+				break;
+			
+			case 2:
+				cout << "Judul Buku      : ";
+				cin >> judul;
+				cout << "Pengarang Buku  : ";
+				cin >> pengarang;
+				cout << "Tahun Terbit	 : ";
+				cin >> tahunTerbit;
+				cout << "Posisi Baru	 : ";
+				cin >> posisi;
+				changeMiddle(judul, pengarang, tahunTerbit, posisi);
+				cout << endl << endl;
+				break;
 
-		case 3:
-			cout << "Judul Buku      : ";
-			cin >> judul;
-			cout << "Pengarang Buku  : ";
-			cin >> pengarang;
-			cout << "Tahun Terbit	 : ";
-			cin >> tahunTerbit;
-			changeLast(judul, pengarang, tahunTerbit);
-			cout << endl << endl;
-			break;
+			case 3:
+				cout << "Judul Buku      : ";
+				cin >> judul;
+				cout << "Pengarang Buku  : ";
+				cin >> pengarang;
+				cout << "Tahun Terbit	 : ";
+				cin >> tahunTerbit;
+				changeLast(judul, pengarang, tahunTerbit);
+				cout << endl << endl;
+				break;
 
-		default:
-			cout << "Pilihan tidak valid. Silahkan coba lagi.";
-			cout << "\n\n" << endl;
-			break;
-		}
+			default:
+				cout << "Pilihan tidak valid. Silahkan coba lagi.";
+				cout << "\n\n" << endl;
+				break;
+			}
+		} while (upd != 3);
 	}
 }
 
 void deleteData()
 {
-	system("cls");
 	if (countSingleLinkedList() == 0)
 	{
 		cout << "Data masih kosong!\nTidak ada yang bisa dihapus.";
 		cout << "\n\n" << endl;
 	}
 	else
-	{
+	{ 
 		int posisi;
-		int Delete;	
-		cout << "=== Delete Menu ===" << endl;
-		cout << "1. Delete First Data" << endl;
-		cout << "2. Delete Middle Data" << endl;
-		cout << "3. Delete Last Data" << endl;
-		cout << "Angka selain diatas untuk keluar" << endl;
-		cout << "Masukkan pilihan : "; cin >> Delete;
-		switch (Delete)
+		int del;	
+		do
 		{
-		case 1:
-			removeFirst();
-			cout << endl << endl;
-			break;
-			
-		case 2:
-			cout << "Posisi yang ingin dihapus : ";
-			cin >> posisi;
-			removeMiddle(posisi);
-			cout << endl << endl;
-			break;
+			system("cls");
+			cout << "=== Delete Menu ===" << endl;
+			cout << "1. Delete First Data" << endl;
+			cout << "2. Delete Middle Data" << endl;
+			cout << "3. Delete Last Data" << endl;
+			cout << "Angka selain diatas untuk keluar" << endl;
+			cout << "Masukkan pilihan : "; cin >> del;
+			switch (del)
+			{
+			case 1:
+				removeFirst();
+				cout << endl << endl;
+				break;
+				
+			case 2:
+				cout << "Posisi yang ingin dihapus : ";
+				cin >> posisi;
+				removeMiddle(posisi);
+				cout << endl << endl;
+				break;
 
-		case 3:
-			removeLast();
-			cout << endl << endl;
-			break;
-		
-		default:
-			cout << "Pilihan tidak valid. Silahkan coba lagi.";
-			cout << "\n\n" << endl;
-			break;
-		}
+			case 3:
+				removeLast();
+				cout << endl << endl;
+				break;
+			
+			default:
+				cout << "Pilihan tidak valid. Silahkan coba lagi.";
+				cout << "\n\n" << endl;
+				break;
+			}
+		} while (del != 3);
 	}
 }
 
 void addData()
 {
-	system("cls");
 	if (countSingleLinkedList() == 0)
 	{
-		cout << "Data belum tersedia!\nSilahkan buat dengan menu create.";
+		cout << "Data belum tersedia!\nSilahkan buat dengan menu Create.";
 		cout << "\n\n" << endl;
 	}
 	else
@@ -355,54 +359,58 @@ void addData()
 		string judul, pengarang;
 		int tahunTerbit, posisi;
 		int add;
-		cout << "=== Add Menu ===" << endl;
-		cout << "1. Add First Data" << endl;
-		cout << "2. Add Middle Data" << endl;
-		cout << "3. Add Last Data" << endl;
-		cout << "Angka selain diatas untuk keluar" << endl;
-		cout << "Masukkan pilihan : "; cin >> add;
-		switch (add)
+		do
 		{
-		case 1:
-			cout << "Judul Buku      : ";
-			cin >> judul;
-			cout << "Pengarang Buku  : ";
-			cin >> pengarang;
-			cout << "Tahun Terbit	 : ";
-			cin >> tahunTerbit;
-			addFirst(judul, pengarang, tahunTerbit);
-			cout << endl << endl;
-			break;
+			system("cls");
+			cout << "=== Add Menu ===" << endl;
+			cout << "1. Add First Data" << endl;
+			cout << "2. Add Middle Data" << endl;
+			cout << "3. Add Last Data" << endl;
+			cout << "Angka selain diatas untuk keluar" << endl;
+			cout << "Masukkan pilihan : "; cin >> add;
+			switch (add)
+			{
+			case 1:
+				cout << "Judul Buku      : ";
+				cin >> judul;
+				cout << "Pengarang Buku  : ";
+				cin >> pengarang;
+				cout << "Tahun Terbit	 : ";
+				cin >> tahunTerbit;
+				addFirst(judul, pengarang, tahunTerbit);
+				cout << endl << endl;
+				break;
 
-		case 2:
-			cout << "Judul Buku      : ";
-			cin >> judul;
-			cout << "Pengarang Buku  : ";
-			cin >> pengarang;
-			cout << "Tahun Terbit	 : ";
-			cin >> tahunTerbit;
-			cout << "Posisi Baru	 : ";
-			cin >> posisi;
-			addMiddle(judul, pengarang, tahunTerbit, posisi);
-			cout << endl << endl;
-			break;
+			case 2:
+				cout << "Judul Buku      : ";
+				cin >> judul;
+				cout << "Pengarang Buku  : ";
+				cin >> pengarang;
+				cout << "Tahun Terbit	 : ";
+				cin >> tahunTerbit;
+				cout << "Posisi Baru	 : ";
+				cin >> posisi;
+				addMiddle(judul, pengarang, tahunTerbit, posisi);
+				cout << endl << endl;
+				break;
 
-		case 3:
-			cout << "Judul Buku      : ";
-			cin >> judul;
-			cout << "Pengarang Buku  : ";
-			cin >> pengarang;
-			cout << "Tahun Terbit	 : ";
-			cin >> tahunTerbit;
-			addLast(judul, pengarang, tahunTerbit);
-			cout << endl << endl;
-			break;
-		
-		default:
-			cout << "Pilihan tidak valid. Silahkan coba lagi.";
-			cout << "\n\n" << endl;
-			break;
-		}
+			case 3:
+				cout << "Judul Buku      : ";
+				cin >> judul;
+				cout << "Pengarang Buku  : ";
+				cin >> pengarang;
+				cout << "Tahun Terbit	 : ";
+				cin >> tahunTerbit;
+				addLast(judul, pengarang, tahunTerbit);
+				cout << endl << endl;
+				break;
+			
+			default:
+				cout << "Pilihan tidak valid. Silahkan coba lagi.";
+				cout << "\n\n" << endl;
+				break;
+			}
+		} while (add != 3);
 	}
 }
 
@@ -411,7 +419,6 @@ void mainMenu()
 	int pilihan;
 	do
 	{
-		system("cls");
 		cout << "=== Menu CRUD ===" << endl;
 		cout << "1. Create Data " << endl;
 		cout << "2. Read Data " << endl;
@@ -441,7 +448,6 @@ void mainMenu()
 			system("cls");
 			cout << "Terimakasih telah menggunakan program ini" << endl;
 			cout << "Keluar dari program...." << endl;
-			cout << "\n\n" << endl;
 			break;
 		default:
 			cout << "Pilihan tidak valid. Silahkan coba lagi." << endl;
