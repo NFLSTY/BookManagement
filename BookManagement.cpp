@@ -268,6 +268,7 @@ void updateData()
 				cout << "Tahun Terbit	 : ";
 				cin >> tahunTerbit;
 				changeFirst(judul, pengarang, tahunTerbit);
+				message();
 				cout << endl << endl;
 				break;
 			
@@ -281,6 +282,7 @@ void updateData()
 				cout << "Posisi Baru	 : ";
 				cin >> posisi;
 				changeMiddle(judul, pengarang, tahunTerbit, posisi);
+				message();
 				cout << endl << endl;
 				break;
 
@@ -292,6 +294,7 @@ void updateData()
 				cout << "Tahun Terbit	 : ";
 				cin >> tahunTerbit;
 				changeLast(judul, pengarang, tahunTerbit);
+				message();
 				cout << endl << endl;
 				break;
 
@@ -332,6 +335,7 @@ void deleteData()
 			{
 			case 1:
 				removeFirst();
+				message();
 				cout << endl << endl;
 				break;
 				
@@ -339,11 +343,13 @@ void deleteData()
 				cout << "Posisi yang ingin dihapus : ";
 				cin >> posisi;
 				removeMiddle(posisi);
+				message();
 				cout << endl << endl;
 				break;
 
 			case 3:
 				removeLast();
+				message();
 				cout << endl << endl;
 				break;
 
