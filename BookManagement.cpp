@@ -194,6 +194,11 @@ void printSingleLinkedList()
 
 //-------------------------MENU CRUD PROGRAM------------------------//
 
+void message()
+{
+	//message for successful operation
+}
+
 void createData()
 {
 	cur = head;
