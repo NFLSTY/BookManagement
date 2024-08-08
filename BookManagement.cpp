@@ -193,10 +193,6 @@ void printSingleLinkedList()
 }
 
 //-------------------------MENU CRUD PROGRAM------------------------//
-void message()
-{
-	printf("Operasi telah berhasil dilakukan!");
-}
 
 void createData()
 {
@@ -204,6 +200,7 @@ void createData()
 	if (cur != NULL)
 	{
 		cout << "Gunakan menu 'Add' untuk menambahkan data baru!";
+
 		cout << "\n\n" << endl;
 	}
 	else
@@ -215,10 +212,9 @@ void createData()
 		cin >> judul;
 		cout << "Pengarang Buku  : ";
 		cin >> pengarang;
-		cout << "Tahun Terbit    : ";
+		cout << "Tahun Terbit	 : ";
 		cin >> tahunTerbit;
 		createSingleLinkedList(judul, pengarang, tahunTerbit);
-		message();
 		cout << "\n\n" << endl;
 	}
 }
@@ -268,7 +264,6 @@ void updateData()
 				cout << "Tahun Terbit	 : ";
 				cin >> tahunTerbit;
 				changeFirst(judul, pengarang, tahunTerbit);
-				message();
 				cout << endl << endl;
 				break;
 			
@@ -282,7 +277,6 @@ void updateData()
 				cout << "Posisi Baru	 : ";
 				cin >> posisi;
 				changeMiddle(judul, pengarang, tahunTerbit, posisi);
-				message();
 				cout << endl << endl;
 				break;
 
@@ -294,7 +288,6 @@ void updateData()
 				cout << "Tahun Terbit	 : ";
 				cin >> tahunTerbit;
 				changeLast(judul, pengarang, tahunTerbit);
-				message();
 				cout << endl << endl;
 				break;
 
@@ -335,7 +328,6 @@ void deleteData()
 			{
 			case 1:
 				removeFirst();
-				message();
 				cout << endl << endl;
 				break;
 				
@@ -343,13 +335,11 @@ void deleteData()
 				cout << "Posisi yang ingin dihapus : ";
 				cin >> posisi;
 				removeMiddle(posisi);
-				message();
 				cout << endl << endl;
 				break;
 
 			case 3:
 				removeLast();
-				message();
 				cout << endl << endl;
 				break;
 
