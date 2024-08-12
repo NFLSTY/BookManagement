@@ -433,6 +433,18 @@ void addData()
 	}
 }
 
+void findBook()
+{
+	string book;
+	int i, n = 0;
+	cout << "Masukkan nama buku yang ingin dicari: ";
+	getline(cin, book);
+	for (i = 0; i < n; i++)
+	{
+
+	}
+}
+
 void mainMenu()
 {
 	int pilihan;
@@ -444,7 +456,8 @@ void mainMenu()
 		cout << "3. Update Data " << endl;
 		cout << "4. Delete Data " << endl;
 		cout << "5. Add Data " << endl;
-		cout << "6. Exit " << endl;
+		cout << "6. Find Data " << endl;
+		cout << "7. Exit " << endl;
 		cout << "Masukkan pilihan : "; cin >> pilihan;
 		switch (pilihan)
 		{
