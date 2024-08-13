@@ -194,6 +194,11 @@ void printSingleLinkedList()
 
 //-------------------------MENU CRUD PROGRAM------------------------//
 
+void testMessage()
+{
+	printf("Program berjalan dengan sukses");
+}
+
 void createData()
 {
 	cur = head;
@@ -436,7 +441,17 @@ void findBook()
 	getline(cin, book);
 	for (i = 0; i < n; i++)
 	{
-
+		if (head != NULL)
+		{
+			cout << "Data yang dicari tidak ditemukan";
+		}
+		else
+		{
+			cout << "Judul Buku : " << cur->judul << endl;
+			cout << "Pengarang Buku : " << cur->pengarang << endl;
+			cout << "Tahun Terbit Buku : " << cur->tahunTerbit << endl;
+			cout << "---------------------------" << endl;
+		}	
 	}
 }
 
