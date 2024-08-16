@@ -433,7 +433,7 @@ void addData()
 	}
 }
 
-void findBook()
+void findBook() //trash function
 {
 	string book;
 	int i, n = 0;
